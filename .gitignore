@@ -30,6 +30,10 @@ barber_frontend/flutter_*.png
 # Web & Node dependencies (if any)
 node_modules/
 
+# Large media files (>100MB blocked by GitHub)
+docs/*.webm
+docs/*.mp4
+
 # Local configuration / secrets
 *.env
 *.local

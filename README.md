@@ -14,11 +14,18 @@ An enterprise-grade, full-stack salon & barber shop booking ecosystem featuring 
 ## 🎬 Application Demo & Workflow Showcase
 
 <div align="center">
-  <img src="docs/demo.gif" alt="Barber App Full User Flow Demo" width="85%"/>
-  <p><i>Full End-to-End Application Flow: Shop Discovery ➔ Slot Booking ➔ Real-time Barber Dashboard & Analytics</i></p>
+  <h3>💈 Customer Booking & Shop Discovery Flow</h3>
+  <video src="docs/Screen_recording_20261006_085542.webm" width="85%" controls autoplay muted loop></video>
+  <p><i>Real-Time Proximity Shop Search, Service Selection & Slot Booking</i></p>
+  <br/>
+  <h3>✂️ Barber Dashboard & Management Flow</h3>
+  <video src="docs/Screen_recording_20261006_092140.webm" width="85%" controls autoplay muted loop></video>
+  <p><i>Barber Shop Management, Real-Time Revenue Analytics & Appointment Status Tracking</i></p>
 </div>
 
-> 💡 **Video Demo**: If you prefer video format, watch the full walkthrough in high resolution: [`docs/demo.mp4`](docs/demo.mp4).
+> 💡 **Direct Video Walkthroughs**:
+> - 📹 [Customer Flow Video (`Screen_recording_20261006_085542.webm`)](docs/Screen_recording_20261006_085542.webm)
+> - 📹 [Barber Dashboard Video (`Screen_recording_20261006_092140.webm`)](docs/Screen_recording_20261006_092140.webm)
 
 ---
 
