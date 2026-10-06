@@ -1,0 +1,280 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../providers/shop_provider.dart';
+import '../providers/auth_provider.dart';
+import '../utils/constants.dart';
+import 'shop_detail_screen.dart';
+
+class CustomerHomeScreen extends StatefulWidget {
+  const CustomerHomeScreen({super.key});
+    
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 150.0,
+            floating: false,
+            pinned: true,
+            backgroundColor: AppColors.background,
+            actions: [
+              // Location on right side
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.location_on, color: AppColors.primary, size: 16),
+                    const SizedBox(width: 4),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Text(
+                        user?.location ?? 'Pune',
+                        style: GoogleFonts.outfit(
+                          color: AppColors.secondary,
+                          fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        )
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Profile Avatar in title bar
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/profile-edit');
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundColor: AppColors.surface,
+                    backgroundImage: user?.profilePic != null && user!.profilePic!.isNotEmpty
+                        ? NetworkImage(user.profilePic!)
+                        : null,
+                    child: user?.profilePic == null || user!.profilePic!.isEmpty
+                        ? Icon(Icons.person, color: AppColors.primary, size: 20)
+                        : null,
+                  ),
+                ),
+              ),
+            ],
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: false,
+              titlePadding: const EdgeInsets.only(left: 16, bottom: 16),
+              title: Text(
+                'Find your\nBarber',
+                style: GoogleFonts.outfit(
+                  color: AppColors.onBackground,
+                  fontWeight: FontWeight.bold,
+                  height: 1.0,
+                ),
+              ),
+              background: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.center,
+                    colors: [AppColors.primary.withOpacity(0.1), AppColors.background],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildSearchBar(),
+                  const SizedBox(height: 24),
+                  Text('Categories', style: _headerStyle()),
+                  const SizedBox(height: 12),
+                  _buildHorizontalCategories(),
+                  const SizedBox(height: 24),
+                  Text('Nearest Barber Shops', style: _headerStyle()),
+                  const SizedBox(height: 12),
+                ],
+              ),
+            ),
+          ),
+          Consumer<ShopProvider>(
+            builder: (context, shopProvider, child) {
+              if (shopProvider.isLoading) {
+                return const SliverFillRemaining(
+                  child: Center(child: CircularProgressIndicator()),
+                );
+              }
+
+              if (shopProvider.shops.isEmpty) {
+                return const SliverFillRemaining(
+                  child: Center(child: Text('No shops found')),
+                );
+              }
+
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final shop = shopProvider.shops[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      child: _buildShopCard(shop),
+                    );
+                  },
+                  childCount: shopProvider.shops.length,
+                ),
+              );
+            },
+          ),
+          const SliverPadding(padding: EdgeInsets.only(bottom: 20)),
+        ],
+      ),
+    );
+  }
+
+  TextStyle _headerStyle() => GoogleFonts.outfit(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: AppColors.onBackground,
+  );
+
+  Widget _buildSearchBar() {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: "Search for 'Haircut'...",
+          prefixIcon: Icon(Icons.search, color: AppColors.secondary),
+          border: InputBorder.none,
+          contentPadding: const EdgeInsets.all(16),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHorizontalCategories() {
+    final categories = ['All', 'Haircut', 'Beard', 'Facial', 'Color'];
+    return SizedBox(
+      height: 40,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          final isSelected = index == 0;
+          return Container(
+            margin: const EdgeInsets.only(right: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            decoration: BoxDecoration(
+              color: isSelected ? AppColors.primary : AppColors.surface,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              categories[index],
+              style: TextStyle(
+                color: isSelected ? AppColors.onPrimary : AppColors.secondary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildShopCard(shop) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShopDetailScreen(shop: shop)),
+        );
+      },
+      child: Container(
+        height: 240,
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+             BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            )
+          ]
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 3,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                child: shop.images != null && shop.images!.isNotEmpty
+                    ? Image.network(shop.images![0], fit: BoxFit.cover, width: double.infinity)
+                    : Container(
+                        color: Colors.grey[800],
+                        child: const Center(child: Icon(Icons.store, size: 50, color: Colors.white24)),
+                      ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          shop.name,
+                          style: GoogleFonts.outfit(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.onSurface,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.star, size: 12, color: Colors.black),
+                              const SizedBox(width: 4),
+                              Text(
+                                '${shop.rating}',
+                                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.location_on, size: 14, color: AppColors.secondary),
+                        const SizedBox(width: 4),
+                        Expanded(child: Text(shop.address, style: TextStyle(color: AppColors.secondary, fontSize: 12), overflow: TextOverflow.ellipsis)),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
