@@ -14,16 +14,16 @@ An enterprise-grade, full-stack salon & barber shop booking ecosystem featuring 
 ## 📱 Application Screenshots & UI Showcase
 
 ### 👤 Customer Experience
-| Splash & Login | Nearby Shops Search | Shop Details & Services | Slot Booking |
+| Customer Home & Discovery | Shop Details & Services | Date & Slot Selection | Booking History & Status |
 | :---: | :---: | :---: | :---: |
-| <img src="docs/splash_login.png" width="220" alt="Splash & Login"/> | <img src="docs/customer_home.png" width="220" alt="Customer Home"/> | <img src="docs/shop_details.png" width="220" alt="Shop Details"/> | <img src="docs/slot_booking.png" width="220" alt="Slot Booking"/> |
+| <img src="docs/customer/vlcsnap-2026-10-06-10h19m06s775.png" width="220" alt="Customer Home"/> | <img src="docs/customer/vlcsnap-2026-10-06-10h19m43s613.png" width="220" alt="Shop Details"/> | <img src="docs/customer/vlcsnap-2026-10-06-10h19m57s777.png" width="220" alt="Slot Selection"/> | <img src="docs/customer/vlcsnap-2026-10-06-10h20m48s732.png" width="220" alt="Booking History"/> |
 
 <br/>
 
 ### ✂️ Barber Owner & Admin Portals
-| Barber Dashboard | Revenue Analytics | Team Management | Admin Console |
+| Barber Dashboard | Business Analytics Chart | Service Catalog Setup | Admin Management Console |
 | :---: | :---: | :---: | :---: |
-| <img src="docs/barber_dashboard.png" width="220" alt="Barber Dashboard"/> | <img src="docs/analytics_chart.png" width="220" alt="Revenue Analytics"/> | <img src="docs/my_team.png" width="220" alt="Team Management"/> | <img src="docs/admin_panel.png" width="220" alt="Admin Panel"/> |
+| <img src="docs/barber/vlcsnap-2026-10-06-10h22m52s543.png" width="220" alt="Barber Dashboard"/> | <img src="docs/barber/vlcsnap-2026-10-06-10h25m04s400.png" width="220" alt="Analytics Chart"/> | <img src="docs/barber/vlcsnap-2026-10-06-10h25m01s712.png" width="220" alt="Services Setup"/> | <img src="docs/admin/vlcsnap-2026-10-06-10h28m29s879.png" width="220" alt="Admin Panel"/> |
 
 ---
 
