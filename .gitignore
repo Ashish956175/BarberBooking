@@ -1,0 +1,35 @@
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Backend (Java / Maven / Spring Boot)
+barber-backend/target/
+barber-backend/.classpath
+barber-backend/.project
+barber-backend/.settings/
+barber-backend/*.log
+
+# Frontend (Flutter / Dart)
+barber_frontend/.dart_tool/
+barber_frontend/.flutter-plugins
+barber_frontend/.flutter-plugins-dependencies
+barber_frontend/.packages
+barber_frontend/.pub-cache/
+barber_frontend/.pub/
+barber_frontend/build/
+barber_frontend/flutter_*.png
+
+# Web & Node dependencies (if any)
+node_modules/
+
+# Local configuration / secrets
+*.env
+*.local
