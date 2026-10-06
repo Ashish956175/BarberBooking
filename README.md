@@ -11,21 +11,19 @@ An enterprise-grade, full-stack salon & barber shop booking ecosystem featuring 
 
 ---
 
-## 🎬 Application Demo & Workflow Showcase
+## 📱 Application Screenshots & UI Showcase
 
-<div align="center">
-  <h3>💈 Customer Booking & Shop Discovery Flow</h3>
-  <video src="docs/Screen_recording_20261006_085542.webm" width="85%" controls autoplay muted loop></video>
-  <p><i>Real-Time Proximity Shop Search, Service Selection & Slot Booking</i></p>
-  <br/>
-  <h3>✂️ Barber Dashboard & Management Flow</h3>
-  <video src="docs/Screen_recording_20261006_092140.webm" width="85%" controls autoplay muted loop></video>
-  <p><i>Barber Shop Management, Real-Time Revenue Analytics & Appointment Status Tracking</i></p>
-</div>
+### 👤 Customer Experience
+| Splash & Login | Nearby Shops Search | Shop Details & Services | Slot Booking |
+| :---: | :---: | :---: | :---: |
+| <img src="docs/splash_login.png" width="220" alt="Splash & Login"/> | <img src="docs/customer_home.png" width="220" alt="Customer Home"/> | <img src="docs/shop_details.png" width="220" alt="Shop Details"/> | <img src="docs/slot_booking.png" width="220" alt="Slot Booking"/> |
 
-> 💡 **Direct Video Walkthroughs**:
-> - 📹 [Customer Flow Video (`Screen_recording_20261006_085542.webm`)](docs/Screen_recording_20261006_085542.webm)
-> - 📹 [Barber Dashboard Video (`Screen_recording_20261006_092140.webm`)](docs/Screen_recording_20261006_092140.webm)
+<br/>
+
+### ✂️ Barber Owner & Admin Portals
+| Barber Dashboard | Revenue Analytics | Team Management | Admin Console |
+| :---: | :---: | :---: | :---: |
+| <img src="docs/barber_dashboard.png" width="220" alt="Barber Dashboard"/> | <img src="docs/analytics_chart.png" width="220" alt="Revenue Analytics"/> | <img src="docs/my_team.png" width="220" alt="Team Management"/> | <img src="docs/admin_panel.png" width="220" alt="Admin Panel"/> |
 
 ---
 
